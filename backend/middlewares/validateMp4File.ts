@@ -3,6 +3,7 @@ import ffmpeg from 'fluent-ffmpeg';
 import path from 'path';
 import os from 'os';
 import fs from 'fs';
+import { v4 as uuidv4 } from 'uuid';
 import { ConvertRequest } from '../interfaces/request';
 
 export const validateMp4File = (
@@ -17,7 +18,7 @@ export const validateMp4File = (
     return;
   }
 
-  const videoPath = path.join(os.tmpdir(), `${Date.now()}-input.mp4`);
+  const videoPath = path.join(os.tmpdir(), `${uuidv4()}-input.mp4`);
   fs.writeFile(videoPath, mp4File.buffer, (error) => {
     if (error) {
       res.status(500).json({ error: 'Failed to write MP4 file' });

@@ -2,10 +2,11 @@ import ffmpeg from 'fluent-ffmpeg';
 import path from 'path';
 import fs from 'fs';
 import os from 'os';
+import { v4 as uuidv4 } from 'uuid';
 
 export const convert = (videoPath: string): Promise<Buffer> => {
   return new Promise((resolve, reject) => {
-    const tempPath = path.join(os.tmpdir(), `${Date.now()}-output.gif`); 
+    const tempPath = path.join(os.tmpdir(), `${uuidv4()}-output.gif`); 
 
     ffmpeg(videoPath)
       .outputOptions([

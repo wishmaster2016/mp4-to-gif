@@ -55,7 +55,18 @@ docker service ps mp4_to_gif_stack_backend # Check status of backend replicas
 docker service ps mp4_to_gif_stack_frontend # Check status of frontend replica
 ```
 
-### Step 6: Tear Down the Stack
+### Step 6: Run Backend Load Test
+
+To simulate load on the backend service, navigate to the `load-test` directory and execute the load test script:
+
+```bash
+cd load-test
+./load-test.sh
+```
+
+The `load-test.sh` script will initiate a series of requests to test the backend service’s performance under load. Ensure the backend service is running before initiating the load test.
+
+### Step 7: Tear Down the Stack
 
 To stop and remove the stack, run:
 
@@ -63,7 +74,7 @@ To stop and remove the stack, run:
 docker stack rm mp4_to_gif_stack
 ```
 
-### Step 7: Leave Docker Swarm (Optional)
+### Step 8: Leave Docker Swarm (Optional)
 
 If you’re done using Swarm mode, you can leave it with:
 
@@ -75,6 +86,7 @@ docker swarm leave --force
 
 - **frontend/**: Contains the Angular frontend service, exposed on port 4200.
 - **backend/**: Contains the Node.js backend service, exposed on port 3000.
+- **load-test/**: Contains the load testing script `load-test.sh` to test backend performance.
 
 ## Troubleshooting
 
@@ -84,4 +96,4 @@ docker swarm leave --force
 
 ---
 
-This `README.md` provides step-by-step instructions for setting up, running, and monitoring the application in a Docker Swarm environment locally. Let me know if you need any further adjustments!
+This updated `README.md` includes a new section under "Setup and Run Locally" for running a backend load test. Let me know if you need more adjustments!

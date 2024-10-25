@@ -7,6 +7,7 @@ export const convertToGif = async (
   res: Response
 ): Promise<void> => {
   const mp4File = req.file;
+  console.log('NEW Request ----------------------------------------!');
 
   if (!mp4File) {
     res.status(400).json({ error: 'MP4 file is required' });
