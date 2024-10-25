@@ -1,0 +1,11 @@
+<div class="upload-container">
+  <form [formGroup]="uploadForm" (ngSubmit)="onUpload()">
+    <input type="file" (change)="onFileSelect($event)" required />
+    <button type="submit" [disabled]="!uploadForm.valid || !selectedFile">
+      Upload and Convert
+    </button>
+  </form>
+  <div class="link-container" *ngIf="downloadUrl">
+    <a [href]="downloadUrl" download="converted.gif">Download GIF</a>
+  </div>
+</div>
