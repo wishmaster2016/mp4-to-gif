@@ -1,4 +1,4 @@
-# Frontend
+# Frontend - MP4 to GIF Conversion Service
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
 
