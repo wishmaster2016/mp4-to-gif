@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormBuilder, FormGroup } from '@angular/forms';
 import { VideoConversionService } from '../../services/video-conversion.service';
 import { LoaderService } from '../../services/loader.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-video-convert',
@@ -19,7 +20,8 @@ export class VideoConvertComponent {
   constructor(
     private fb: FormBuilder,
     private videoConversionService: VideoConversionService,
-    private loaderService: LoaderService
+    private loaderService: LoaderService,
+    private toastr: ToastrService
   ) {
     this.uploadForm = this.fb.group({});
   }
@@ -41,8 +43,9 @@ export class VideoConvertComponent {
         this.downloadUrl = URL.createObjectURL(response);
         this.loaderService.hideLoader();
       },
-      error => {
-        console.error('Error converting video', error);
+      async (error) => {
+        const errorData = JSON.parse(await error.error.text());
+        this.toastr.error(errorData.error, 'Error');
         this.loaderService.hideLoader();
       }
     );

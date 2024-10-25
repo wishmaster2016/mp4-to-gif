@@ -22,13 +22,12 @@ docker swarm init
 
 ### Step 2: Build the Docker Images
 
-Ensure your images are up to date by building them with Docker Compose:
+Build the Docker images for both the backend and frontend services:
 
 ```bash
-docker-compose build
+docker build -t mp4_to_gif_backend_image:latest ./backend
+docker build -t mp4_to_gif_frontend_image:latest ./frontend
 ```
-
-This will build the images for both the backend and frontend services from the provided Dockerfile in each directory.
 
 ### Step 3: Deploy the Stack
 

@@ -1,7 +1,7 @@
 version: '3.8'
 services:
   backend:
-    build: ./backend
+    image: mp4_to_gif_backend_image:latest
     ports:
       - "3000:3000"
     deploy:
@@ -11,9 +11,8 @@ services:
           memory: 2048M
       restart_policy:
         condition: on-failure
-
   frontend:
-    build: ./frontend
+    image: mp4_to_gif_frontend_image:latest
     ports:
       - "4200:4200"
     deploy:
